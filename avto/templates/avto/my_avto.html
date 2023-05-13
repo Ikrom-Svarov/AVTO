@@ -1,0 +1,33 @@
+{% extends 'salon.html' %}
+
+{% block title %}
+Avtosalon
+{% endblock %}
+
+{% block content %}
+
+
+<br>
+<div class="row row-cols-1 row-clos-md-3 mb-3 ">
+  <br>
+
+  {% for avto in avto %}
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <h2 class="text-center">{{ avto.body_type }}</h2>
+      <img src="{{ avto.image.url }}" class="card-img-top" width="100%" alt="...">
+      <div class="card-deck mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Make:{{ avto.make }}</h5>
+          <p class="card-text">Model:{{ avto.model }}</p>
+          <p class="card-text">Price:{{ avto.price }} $</p>
+          <div class="text-right"> 
+            <a href="{%  url 'avto' avto.id %}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

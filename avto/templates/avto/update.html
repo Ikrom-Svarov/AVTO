@@ -1,0 +1,14 @@
+{% extends 'salon.html' %}
+
+{% block title %}
+Update
+{% endblock %}
+
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}

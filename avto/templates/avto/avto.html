@@ -1,0 +1,91 @@
+{% extends 'salon.html' %}
+
+{% block title %}
+
+{{ avto.make }}
+
+{% endblock %}
+
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <img src="{{ avto.image.url }}" alt="..." width="100%">
+        <br>
+       
+    </div>
+    <div class="col-md-8">
+        <br>
+        <h1>
+            {{ avto.make }}
+        </h1>
+        <p>
+              <strong><i>Model:</i></strong>{{ avto.model }}
+        </p>
+        <p>
+            <strong><i>body_type:</i></strong> {{ avto.body_type }}
+        </p>
+        <p>
+            <strong><i>year:</i></strong> {{ avto.year }}
+        </p>
+        
+
+        <p>
+           <strong><i>Volume:</i></strong> {{ avto.engine_volume }}
+        </p>
+        
+        <p>
+            <strong><i>Color:</i></strong> {{ avto.color }}
+
+        </p>
+        <p>
+            <strong><i>Mileage:</i></strong> {{ avto.mileage }}
+        </p>
+
+        <p>
+            <strong><i>Price:</i></strong> {{ avto.price}}
+        </p>
+
+        <p>
+            <strong><i>Owner:</i></strong> {{ avto.owner}}
+        </p>
+        
+        <br>
+        <div>
+            {% if object.owner == request.user %}
+        <form method="post" action="{% url 'delete' avto.id  %}">
+            {% csrf_token %}
+    
+            
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        {% endif %}
+
+    </div>
+            <br>
+        <div >  
+            {% if object.owner == request.user %}
+
+        <form   method="post" action="#"> 
+        {% csrf_token %}
+    
+          <br>
+          <button  type="submit"  class="btn btn-danger">
+          <a href="{% url 'update' avto.id %}">Update </button>
+        </a>
+        </form>
+        {% endif %}
+
+        </div>
+    </div>
+    <div class="text-right">
+
+</div>
+</div>
+
+
+         
+    
+
+{% endblock %}
